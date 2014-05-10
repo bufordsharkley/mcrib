@@ -92,6 +92,7 @@ function checkTweets() {
 
 function displayTweet() {
   if(!latestTweets) return;
+  if(!MCD_LOCATIONS) return;
   
   var random = Math.floor(Math.random()*latestTweets.length);
   var tweet = latestTweets[random];
