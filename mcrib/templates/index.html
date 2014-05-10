@@ -2,19 +2,19 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>KZSU DJ Monitor</title>
+    <title>McRib Monitor</title>
     <script type=text/javascript>
         // Allows jquery modules to successfully call subpages without being dependent on full URLs:
         $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
     </script>
 		<link href="{{ url_for('static', filename='reset.css') }}" rel="stylesheet" type="text/css" />
     <link href="{{ url_for('static', filename='mcrib.css') }}" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="{{ url_for('static', filename='d3.v3.min.js') }}"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='mcrib.js') }}"></script>
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   </head>
-  <body>
+  <body onload="setupMap();">
     <div id="map-container">
-    	<img id="map-render" src="{{ url_for('static', filename='us_map_1.svg') }}"></object>
+    	<img id="map-render" src="{{ url_for('static', filename='usa.svg') }}">
     </div>
   </body>
 </html>

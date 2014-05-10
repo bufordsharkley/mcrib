@@ -5,10 +5,20 @@ body {
 #map-container {
   width: 100%;
   height: 100%;
-  background: yellow;
 }
 
 #map-render {
   width: 100%;
   height: 100%;
+  float: left;
+  background: #443344;
+}
+
+div.circle {
+  position: absolute;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  background: #882222;
+  opacity: 0.4;
 }
