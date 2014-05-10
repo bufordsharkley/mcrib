@@ -24,8 +24,8 @@ div.circle {
   border-radius: 50%;
   width: 10px;
   height: 10px;
-  background: #882222;
-  opacity: 0.4;
+  background: #eeee22;
+  opacity: 0.2;
 }
 
 div.title {
