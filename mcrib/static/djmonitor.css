@@ -1,0 +1,143 @@
+body{
+    background-color: aliceblue;
+    overflow: hidden;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    margin-top: 13px;
+}
+
+
+header {
+  width: 720px ;
+  margin-left: auto ;
+  margin-right: auto ;
+}
+
+header div {
+    display: inline-block;
+}
+
+header h1,
+header p {
+    display: inline;
+    vertical-align: top;
+    margin: 15px;
+}
+
+#kzsulogoheader {
+    height: 40px;
+}
+
+.instructions{
+    float: right;
+    text-align: right;
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+}
+
+h2 {
+    color: white;
+    font-family: "century gothic", "urw gothic l", "futura std", "helvetica", "sans serif";
+    font-size: 30px;
+    margin: 0;
+    padding: 0;  
+}
+
+
+header p {
+    margin: 30px;
+}
+
+#streamcounts {
+    background-color: black;
+    font-family: "century gothic", "urw gothic l", "futura std", "helvetica", "sans serif";
+    padding-top: 10px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-bottom: 35px;
+}
+
+#streamcounts img{
+    padding: 0;
+}
+
+#streamcounts div{
+    display: inline-block;
+}
+
+div.streamblock{
+    margin-left: 100px;
+    float:right;
+}
+
+#streamcounts p, span{
+    color: white;
+}
+
+
+#streamcounts .stream_kzsu_logo{
+    height: 18px;
+}
+
+#streamcounts p{
+    padding: 0;
+    margin: 0;
+}
+
+#streamcounts .streamcount {
+    color: Goldenrod;
+    font-size: 35px;
+}
+
+.streamnum {
+    font-family: "century gothic", "urw gothic l", "futura std", "helvetica", "sans serif";
+    font-size: 20px;   
+}
+
+header h1{
+    font-family: "century gothic", "urw gothic l", "futura std", "helvetica", "sans serif";
+    font-size: 40px;
+    line-height: 35px;
+}
+
+.messagetext {
+    font-family: "nimbus sans l","urw gothic l", "Droid Sans",Helvetica,Arial,sans-serif;
+    font-size: 18px;
+    fill: black;
+}
+
+.sourcetext{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    fill: black;
+}
+
+.datetimetext{
+    font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+    font-size: 15px;
+    fill: black;
+}
+
+image.source_logo{
+    opacity: 0.7;
+}
+
+rect{
+    stroke-width: 1.5;
+}
+
+rect.tweet {
+    fill: white; /*lightcyan;*/
+    stroke: black; /*limegreen;*/
+}
+
+rect.tweet.outgoing {
+    fill: WhiteSmoke; /*lavender;*/
+    stroke: darkmagenta;
+}
+
+rect.alert {
+    fill: peachpuff;
+    stroke: red;
+}

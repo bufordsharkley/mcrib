@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>KZSU DJ Monitor</title>
+    <script type=text/javascript>
+        // Allows jquery modules to successfully call subpages without being dependent on full URLs:
+        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
+    </script>
+    <link href="{{ url_for('static', filename='djmonitor.css') }}" rel="stylesheet" type="text/css" />
+    <script type="text/javascript" src="{{ url_for('static', filename='d3.v3.min.js') }}"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script type="text/javascript" src="{{ url_for('static', filename='djmonitor.js') }}"></script>
+  </head>
+  <body onload=initializeDJMonitor()>
+    <header>
+      <div>
+        <h1>McRIB MONITOR</h1>
+      </div>
+      <div class="instructions"><p>Not actually about McRibs for now</p>
+      </div>
+    </header>
+    <div id="monitorstream"></div>
+  </body>
+</html>
