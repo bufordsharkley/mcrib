@@ -140,6 +140,7 @@ function setupMap() {
   //createMarker(36.9990, -109.0452, "4C");
   console.log("huerureray");
   
+  /*
   $.getJSON("/locations", function(data) {
     MCD_LOCATIONS = data.locations;
     for(var i = 0; i < data.locations.length; i++) {
@@ -152,6 +153,18 @@ function setupMap() {
     }
     console.log("DONEONEONEONE");
   });
+  */
+  
+  //Grab the JSON blob from the bottom of index.html
+  MCD_LOCATIONS = jsonblob.locations;
+  for(var i = 0; i < jsonblob.locations.length; i++) {
+    setTimeout(
+      (function(point) {
+        return function() {
+          createMarker(point.latitude, point.longitude, "");
+        }
+      })(jsonblob.locations[i]), i);
+  }
   
   //setInterval(function(){glisten()}, 100);
   
