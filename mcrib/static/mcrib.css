@@ -28,6 +28,26 @@ div.circle {
   opacity: 0.2;
 }
 
+div.tweet {
+  position: fixed;
+  background-color: rgba(50, 50, 50, 0.8);
+  color: white;
+  padding: 15px;
+  width: 400px;
+  z-index: 50;
+  font-size: 20px;
+  font-family: 'Roboto Slab', serif;
+  line-height: 25px;
+}
+
+div.pin {
+  position: fixed;
+  border-radius: 50%;
+  background: #ee2222;
+  width: 20px;
+  height: 20px;
+}
+
 div.title {
   position: fixed;
   bottom: 0;
