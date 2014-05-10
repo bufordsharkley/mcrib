@@ -15,10 +15,10 @@ body {
 }
 
 div.circle {
-  position: absolute;
+  position: fixed;
   border-radius: 50%;
-  width: 100px;
-  height: 100px;
+  width: 10px;
+  height: 10px;
   background: #882222;
   opacity: 0.4;
 }
