@@ -16,14 +16,13 @@ def index():
 
 @app.route('/locations/')
 def mcdonalds_locations():
-    with open('mcrib/static/mcdonaldslocations.csv') as f:
-        f.readline()  # burn the header line...
+    with open('mcrib/static/mcdonalds_with_canada.csv') as f:
         alllatlong = []
         for line in f:
             splitline = line.split(',')
             address = splitline[2]
-            lat = splitline[5]
-            lon = splitline[6]
+            lat = splitline[1]
+            lon = splitline[0]
             latlon = {'address': address, 'latitude': lat, 'longitude': lon}
             alllatlong.append(latlon)
     return jsonify({'locations': alllatlong})
