@@ -49,7 +49,7 @@ function createMarker(lat, lon, label) {
 function glisten() {
   var circles = $(".circle");
   for(var i = 0; i < 20 && i < circles.length; i++) {
-    var random = Math.round(Math.random()*circles.length);
+    var random = Math.floor(Math.random()*circles.length);
     circles.eq(random).fadeTo("slow", 0.0);
     setTimeout(
       (function(thisCircle) {
@@ -93,11 +93,16 @@ function checkTweets() {
 function displayTweet() {
   if(!latestTweets) return;
   
-  var random = Math.round(Math.random()*latestTweets.length);
+  var random = Math.floor(Math.random()*latestTweets.length);
   var tweet = latestTweets[random];
   
   //Pick a random McD location
-  random = Math.round(Math.random()*MCD_LOCATIONS.length);
+  //Use the tweet ID as a seed to get a reliable corresponding
+  //location for the same tweet every time.
+  Math.seedrandom(tweet.tweet_id);
+  random = Math.floor(Math.random()*MCD_LOCATIONS.length);
+  Math.seedrandom();
+  
   var mcdLoc = MCD_LOCATIONS[random];
   var pixX = lonToPx(mcdLoc.longitude);
   var pixY = latToPx(mcdLoc.latitude);
@@ -117,8 +122,12 @@ function displayTweet() {
   var tweetDiv = $(".tweet").last();
   tweetDiv.css("left", pixXBox + "px").css("top", pixY + "px");
   
+  //Add the red dot
   tweetDiv.append('<div class="pin"></div>');
   tweetDiv.children().last().css("left", (pixX-7) + "px").css("top", (pixY-7) + "px");
+  
+  //Add the username
+  tweetDiv.append('<div class="username">' + tweet.username + '</div>');
 }
 
 function setupMap() {

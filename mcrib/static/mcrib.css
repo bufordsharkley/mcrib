@@ -33,7 +33,9 @@ div.tweet {
   background-color: rgba(50, 50, 50, 0.8);
   color: white;
   padding: 15px;
+  padding-bottom: 18px;
   width: 400px;
+  border-radius: 5px;
   z-index: 50;
   font-size: 20px;
   font-family: 'Roboto Slab', serif;
@@ -46,6 +48,16 @@ div.pin {
   background: #ee2222;
   width: 20px;
   height: 20px;
+}
+
+div.username {
+  position: absolute;
+  bottom: -10px;
+  right: 10px;
+  text-align: right;
+  font-family: 'Lobster', cursive;
+  font-weight: bold;
+  text-shadow: 2px 2px #444;
 }
 
 div.title {
