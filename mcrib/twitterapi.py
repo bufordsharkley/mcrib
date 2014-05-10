@@ -78,7 +78,7 @@ twitter_handler = TwitterAPIHandler()
 # TODO: give exceptions if we can't pull enough tweets. As is,
 # will fail if twitterREST doesn't return enough, which is determined
 # by default Twitter API (and also how many total tweets there are).
-@twitter_blueprint.route('/api/twitter/alltweets/last/<int:count>/')
+@twitter_blueprint.route('/api/mcribtweets/last/<int:count>/')
 @json_response_with_status
 def recent_tweets(count):
     # REST calls are committed when enough time has passed...
@@ -94,8 +94,8 @@ def recent_tweets(count):
     if twitter_handler.stream_status['operation'] != 'running':
         # check that it's safe to connect to avoid 420 errors
         if twitter_handler.safe_to_stream_connect():
-            twitterstream.streamobject = twitterstream.StreamListener(terms=['noise', 'minimal', 'minimum'],
-                                         # twitter ids for @kzsudj and @kzsu
+            twitterstream.streamobject = twitterstream.StreamListener(terms=['mcrib'],
+                                         # twitter ids for @mcrib (unrelated)
                                          followids=["211296193"],
                                          objecttouse=twitter_handler)
             twitter_handler.stream_status['operation'] = 'running'
