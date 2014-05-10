@@ -131,6 +131,10 @@ function displayTweet() {
   tweetDiv.append('<div class="username">' + tweet.username + '</div>');
 }
 
+function refreshPage() {
+  location.reload();
+}
+
 function setupMap() {
   //Four Corners National Monument -- GREAT for debugging
   //createMarker(36.9990, -109.0452, "4C");
@@ -155,4 +159,7 @@ function setupMap() {
   setInterval(function(){checkTweets()}, 20000);
   
   setInterval(function(){displayTweet()}, 5000);
+  
+  //Refresh the page every 6 hours
+  setTimeout(function(){refreshPage()}, 21600000);
 }
