@@ -1,20 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <title>KZSU DJ Monitor</title>
-    <script type=text/javascript>
-        // Allows jquery modules to successfully call subpages without being dependent on full URLs:
-        $SCRIPT_ROOT = {{ request.script_root|tojson|safe }};
-    </script>
-		<link href="{{ url_for('static', filename='reset.css') }}" rel="stylesheet" type="text/css" />
-    <link href="{{ url_for('static', filename='mcrib.css') }}" rel="stylesheet" type="text/css" />
-    <script type="text/javascript" src="{{ url_for('static', filename='d3.v3.min.js') }}"></script>
-    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-  </head>
-  <body>
-    <div id="map">
-    	
-    </div>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <title>McRib Monitor</title>
+        <script type="text/javascript" src="{{ url_for('static', filename='snap.svg-min.js') }}"></script>
+    </head>
+    <body>
+      <svg id="mcribmap"></svg>
+        <script type="text/javascript">
+
+        
+            var s = Snap("#mcribmap");
+
+            
+            var usa = Snap.load("{{ url_for('static', filename='usa.svg') }}", function ( loadedFragment ) {
+            /*    s.append( loadedFragment );
+                var t = new Snap.Matrix();
+                t.scale(.2);
+                s.transform(t);*/
+
+            });
+
+        </script>
+    </body>
 </html>
