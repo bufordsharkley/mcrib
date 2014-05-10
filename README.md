@@ -1,4 +1,4 @@
 mcrib
 =====
 
-An API for Twitter mentions of McRibs, and a front-end using D3 to display this information.
+An API for Twitter mentions of McRibs, and the front-end (vanilla.js) to display it on a map.
