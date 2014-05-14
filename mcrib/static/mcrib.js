@@ -2,35 +2,36 @@ var WIDTH = Math.min(window.innerWidth,
   document.documentElement.clientWidth);
 var HEIGHT = Math.min(window.innerHeight,
   document.documentElement.clientHeight);
+var MAPRATIO = 1.823 // svg map of USA has this W/H RATIO...
+
 
 var MCD_LOCATIONS;
 
 var latestTweets;
 var lastTweetID;
 
-//FOUR CORNERS = left: 282px; top: 380px;
-//WIDTH = 1083
-//HEIGHT = 713
+var MIN_LAT = 49.4;
+var MIN_LON = -124.5;
+var MAX_LAT = 24.8;
+var MAX_LON = -66.6;
+var XMARGIN = Math.max(0, (WIDTH - HEIGHT*MAPRATIO)/2);
+var YMARGIN = Math.max(0, (HEIGHT - WIDTH/MAPRATIO)/2);
 
-var MIN_LAT = 51.9614;
-var MIN_LON = -124.673;
-var MAX_LAT = 22.1496;
-var MAX_LON = -66.388;
 
 var LAT_HEIGHT = MIN_LAT - MAX_LAT;
 var LON_WIDTH = MAX_LON - MIN_LON;
 
-var PX_PER_LAT = HEIGHT / LAT_HEIGHT;
-var PX_PER_LON = WIDTH / LON_WIDTH;
+var PX_PER_LAT = (HEIGHT - 2 * YMARGIN) / LAT_HEIGHT;
+var PX_PER_LON = (WIDTH - 2 * XMARGIN) / LON_WIDTH;
 
 function lonToPx(lon) {
   var relativeLon = MIN_LON - lon;
-  return -relativeLon * PX_PER_LON;
+  return XMARGIN -relativeLon * PX_PER_LON;
 }
 
 function latToPx(lat) {
   var relativeLat = lat - MIN_LAT;
-  return -relativeLat * PX_PER_LAT;
+  return YMARGIN -relativeLat * PX_PER_LAT;
 }
 
 function createMarker(lat, lon, label) {
@@ -138,7 +139,6 @@ function refreshPage() {
 function setupMap() {
   //Four Corners National Monument -- GREAT for debugging
   //createMarker(36.9990, -109.0452, "4C");
-  console.log("huerureray");
   
   /*
   $.getJSON("/locations", function(data) {
