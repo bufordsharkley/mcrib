@@ -47,15 +47,15 @@ class TwitterRESTFetcher(object):
                }
 
 def _parse_tweet(tweet):
-    print dir(tweet)
     return {
         'username': tweet.user.screen_name,
+        'userlocation': tweet.user.location,
+        'usertimezone': tweet.user.time_zone,
         'text': tweet.text,
         'datetime': tweet.created_at,
         'tweet_id': tweet.id,    
         'geo': tweet.geo,
         'coordinates': tweet.coordinates,
-
     }
 
 

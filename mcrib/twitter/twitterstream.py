@@ -32,9 +32,14 @@ class StreamListener(tweepy.StreamListener):
                 # TODO merge this into a function that's shared between
                 # stream and rest modules...
                 response['username'] = tweet.author.screen_name
+                response['userlocation'] = tweet.author.location
+                response['usertimezone'] = tweet.author.time_zone
                 response['text'] = tweet.text
                 response['datetime'] = tweet.created_at
                 response['tweet_id'] = tweet.id
+                response['geo'] = tweet.geo
+                response['coordinates'] = tweet.coordinates
+
                 self.objecttouse.append(response)
             else:
                 # the following prints to stdout when the __name__ = __main__
