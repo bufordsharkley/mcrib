@@ -92,87 +92,71 @@ function checkTweets() {
 }
 
 function displayTweet() {
-  if(!latestTweets) return;
-  if(!MCD_LOCATIONS) return;
-  
-  var random = Math.floor(Math.random()*latestTweets.length);
-  var tweet = latestTweets[random];
-  
-  //Pick a random McD location
-  //Use the tweet ID as a seed to get a reliable corresponding
-  //location for the same tweet every time.
-  Math.seedrandom(tweet.tweet_id);
-  random = Math.floor(Math.random()*MCD_LOCATIONS.length);
-  Math.seedrandom();
-  
-  var mcdLoc = MCD_LOCATIONS[random];
-  var pixX = lonToPx(mcdLoc.longitude);
-  var pixY = latToPx(mcdLoc.latitude);
-  
-  //Remove existing tweet
-  $(".tweet").remove();
-  
-  //Find text box-friendly location
-  var pixXBox = pixX;
-  if(WIDTH - pixX < 500) {
+    if(!latestTweets) return;
+    if(!MCD_LOCATIONS) return;
+
+    var random = Math.floor(Math.random()*latestTweets.length);
+    var tweet = latestTweets[random];
+
+    //Pick a random McD location
+    //Use the tweet ID as a seed to get a reliable corresponding
+    //location for the same tweet every time.
+    Math.seedrandom(tweet.tweet_id);
+    random = Math.floor(Math.random()*MCD_LOCATIONS.length);
+    Math.seedrandom();
+
+    var mcdLoc = MCD_LOCATIONS[random];
+    var pixX = lonToPx(mcdLoc.longitude);
+    var pixY = latToPx(mcdLoc.latitude);
+
+    //Remove existing tweet
+    $(".tweet").remove();
+
+    //Find text box-friendly location
+    var pixXBox = pixX;
+    if(WIDTH - pixX < 500) {
     pixXBox = pixX - 400;
     pixX += 27
-  }
+    }
   
-  //Add new tweet
-  $("#map-container").append('<div class="tweet">' + tweet.text + '</div>');
-  var tweetDiv = $(".tweet").last();
-  tweetDiv.css("left", pixXBox + "px").css("top", pixY + "px");
-  
-  //Add the red dot
-  tweetDiv.append('<div class="pin"></div>');
-  tweetDiv.children().last().css("left", (pixX-7) + "px").css("top", (pixY-7) + "px");
-  
-  //Add the username
-  tweetDiv.append('<div class="username">' + tweet.username + '</div>');
+    //Add new tweet
+    $("#map-container").append('<div class="tweet">' + tweet.text + '</div>');
+    var tweetDiv = $(".tweet").last();
+    tweetDiv.css("left", pixXBox + "px").css("top", pixY + "px");
+
+    //Add the red dot
+    tweetDiv.append('<div class="pin"></div>');
+    tweetDiv.children().last().css("left", (pixX-7) + "px").css("top", (pixY-7) + "px");
+
+    //Add the username
+    tweetDiv.append('<div class="username">' + tweet.username + '</div>');
 }
 
 function refreshPage() {
-  location.reload();
+    location.reload();
 }
 
 function setupMap() {
-  //Four Corners National Monument -- GREAT for debugging
-  //createMarker(36.9990, -109.0452, "4C");
+    //Four Corners National Monument -- GREAT for debugging
+    //createMarker(36.9990, -109.0452, "4C");
   
-  /*
-  $.getJSON("/locations", function(data) {
-    MCD_LOCATIONS = data.locations;
-    for(var i = 0; i < data.locations.length; i++) {
-      setTimeout(
-        (function(point) {
-          return function() {
-            createMarker(point.latitude, point.longitude, "");
-          }
-        })(data.locations[i]), i);
-    }
-    console.log("DONEONEONEONE");
-  });
-  */
-  
-  //Grab the JSON blob from the bottom of index.html
-  MCD_LOCATIONS = jsonblob.locations;
-  for(var i = 0; i < jsonblob.locations.length; i++) {
-    setTimeout(
-      (function(point) {
-        return function() {
-          createMarker(point.latitude, point.longitude, "");
+    $.getJSON("/static/mcdonaldslocations.json", function(data) {
+        MCD_LOCATIONS = data.locations;
+        for(var i = 0; i < data.locations.length; i++) {
+          setTimeout(
+            (function(point) {
+              return function() {
+                createMarker(point.latitude, point.longitude, "");
+              }
+            })(data.locations[i]), i);
         }
-      })(jsonblob.locations[i]), i);
-  }
-  
-  //setInterval(function(){glisten()}, 100);
-  
-  checkTweets();
-  setInterval(function(){checkTweets()}, 20000);
-  
-  setInterval(function(){displayTweet()}, 5000);
-  
-  //Refresh the page every 6 hours
-  setTimeout(function(){refreshPage()}, 21600000);
+    });
+
+    checkTweets();
+    setInterval(function(){checkTweets()}, 20000);
+
+    setInterval(function(){displayTweet()}, 5000);
+
+    //Refresh the page every 6 hours
+    setTimeout(function(){refreshPage()}, 21600000);
 }
